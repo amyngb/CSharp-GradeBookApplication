@@ -14,13 +14,15 @@ namespace GradeBook.GradeBooks
         public string Name { get; set; }
         public List<Student> Students { get; set; }
         public GradeBookType Type { get; set; }
+        public bool IsWeighted { get; set; }
 
-        public BaseGradeBook(string name)
+        public BaseGradeBook(string name, bool isWeighted)
         {
             Name = name;
             Students = new List<Student>();
+            IsWeighted = isWeighted;
         }
-
+        
         public void AddStudent(Student student)
         {
             if (string.IsNullOrEmpty(student.Name))
@@ -28,7 +30,7 @@ namespace GradeBook.GradeBooks
             Students.Add(student);
         }
 
-        public void RemoveStudent(string name)
+            public void RemoveStudent(string name)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentException("A Name is required to remove a student from a gradebook.");
